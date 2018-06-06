@@ -228,11 +228,11 @@ namespace MathEquation
             for (int i = 0; i < lexems.Count; ++i)
                 if (MathConst.Keys.Contains(lexems[i]))
                     lexems[i] = MathConst[lexems[i]].ToString();
-            return MathFuncParse(lexems);
+            return MathFunctionParse(lexems);
 
         }
 
-        private List<string> MathFuncParse(List<string> lexems)       //замена матфункций на вычисленные значения
+        private List<string> MathFunctionParse(List<string> lexems)       //замена матфункций на вычисленные значения
         {
             for (int i = 0; i < lexems.Count; ++i)
                 if (Functions.Keys.Contains(lexems[i]))

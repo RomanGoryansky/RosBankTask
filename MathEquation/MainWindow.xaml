@@ -1,0 +1,63 @@
+﻿<Window x:Class="MathEquation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathEquation"
+        mc:Ignorable="d"
+        Title="Вычисление значения выражения" Height="350" Width="700" HorizontalAlignment="Center" Background="#D3F2EA">
+    <Window.Resources>
+        <ControlTemplate x:Key="Button_Template" TargetType="{x:Type Button}">
+            <Border BorderBrush="#333" BorderThickness="1" CornerRadius="5" TextBlock.Foreground="White" Margin="0 0 0 0" MaxHeight="30" TextBlock.FontFamily="Arial"
+                                TextBlock.FontSize="16" TextBlock.FontWeight="DemiBold"
+                                MinWidth="80" Padding="5" Name="myBorder">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#676767" Offset="0"></GradientStop>
+                        <GradientStop Color="#474747" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"
+                              VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="myBorder" Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#777777" Offset="0"></GradientStop>
+                                <GradientStop Color="#575757" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter TargetName="myBorder" Property="Cursor" Value="Hand"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="myBorder" Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#939292" Offset="0"></GradientStop>
+                                <GradientStop Color="#575757" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter TargetName="myBorder" Property="Cursor" Value="Hand"></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <StackPanel Margin="0,0,0,-21">
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-17,-23,0,0" Height="314" Width="527">
+            <Label x:Name="enterExpr" Content="Введите выражение" HorizontalAlignment="Left" Margin="111,49,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="DemiBold" FontSize="16"/>
+            <Label x:Name="enterValuable" Content="Введите значение переменной" HorizontalAlignment="Left" Margin="28,95,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="DemiBold" FontSize="16"/>
+            <TextBox x:Name="mathExpression" TextAlignment="Center" HorizontalAlignment="Center" Height="40" Margin="322,47,0,0" Padding="0 10 0 10" FontFamily="Arial" FontWeight="Normal" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
+            <TextBox x:Name="mathValuable" TextAlignment="Center" HorizontalAlignment="Center" Height="40" Margin="322,95,0,0" Padding="0 10 0 10" FontFamily="Arial" FontWeight="Normal" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
+            <Button x:Name="calculate" Template="{StaticResource ResourceKey=Button_Template}" Content="Рассчитать" HorizontalAlignment="Left" Margin="164,225,0,0" VerticalAlignment="Top" Width="119" Click="calculate_Click" RenderTransformOrigin="0.84,0.567" Height="52" />
+            <Button x:Name="clear" Template="{StaticResource ResourceKey=Button_Template}" Content="Очистить" HorizontalAlignment="Left" Margin="393,236,0,0" VerticalAlignment="Top" Width="119" Click="clear_Click" Height="30"/>
+            <Label x:Name="lbResult" Content="Результат" HorizontalAlignment="Left" Margin="194,148,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="DemiBold" FontSize="16"/>
+            <TextBox x:Name="resultbx" HorizontalAlignment="Left" Height="40" Margin="337,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="0 10 0 10" Width="175" FontFamily="Arial" FontWeight="Normal" FontSize="14" TextAlignment="Center"/>
+
+        </Grid>
+    </StackPanel>
+</Window>
